@@ -26,11 +26,13 @@ body {
 }
 
 .chat_header_title {
-    color: white;
-    float: left;
-    margin-top: 3%;
-    margin-left: 32%;
+color: white;
+float: left;
+margin-top: 3%;
+margin-left: 25%;
+font-weight: bold;
 }
+
 
 .chats {
     /* display: none; */
