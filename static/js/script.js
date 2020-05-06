@@ -33,7 +33,7 @@ $(document).ready(function() {
 
     //if you want the bot to start the conversation
     // action_trigger();
-    //send("main options")
+    send("main options");
 
 })
 
