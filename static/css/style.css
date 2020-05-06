@@ -12,14 +12,14 @@ body {
     height: 500px;
     bottom: 5%;
     position: fixed;
-    background: #2c53af;
+    background: #f7f7f7;
     border-radius: 10px 10px 10px 10px;
     box-shadow: 0 0px 1px 0 rgba(0, 0, 0, 0.16), 0 0px 10px 0 #00000096;
 }
 
 .chat_header {
     height: 60px;
-    background: rgb(90, 23, 238);
+    background:#2c53af;
     border-radius: 10px 10px 0px 0px;
     padding: 5px;
     font-size: 20px;

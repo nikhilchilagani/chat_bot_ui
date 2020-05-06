@@ -57,7 +57,7 @@ function action_trigger() {
 
     // send an event to the bot, so that bot can start the conversation by greeting the user
     $.ajax({
-        url: `http://3.6.42.248/conversations/${user_id}/execute`,
+        url: `http://localhost:5005/conversations/${user_id}/execute`,
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify({ "name": action_name, "policy": "MappingPolicy", "confidence": "0.98" }),
@@ -156,7 +156,7 @@ function scrollToBottomOfResults() {
 function send(message) {
 
     $.ajax({
-        url: "http://3.6.42.248/webhooks/rest/webhook",
+        url: "http://localhost:5005/webhooks/rest/webhook",
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify({ message: message, sender: user_id }),
@@ -212,8 +212,23 @@ function setBotResponse(response) {
 
                 //check if the response contains "text"
                 if (response[i].hasOwnProperty("text")) {
-                    var BotResponse = '<img class="botAvatar" src="./static/img/128_chat_icon.png"/><p class="botMsg">' + response[i].text + '</p><div class="clearfix"></div>';
-                    $(BotResponse).appendTo(".chats").hide().fadeIn(1000);
+                    //var BotResponse = '<img class="botAvatar" src="./static/img/128_chat_icon.png"/><p class="botMsg">' + response[i].text + '</p><div class="clearfix"></div>';
+                    //$(BotResponse).appendTo(".chats").hide().fadeIn(1000);
+                      //text_res = replaceStr(response[i].text);
+                    //var BotResponse = '<img class="botAvatar" src="./static/img/128_chat_icon.png"/><p class="botMsg">' +text_res + '</p><div class="clearfix"></div>';
+                    var img = document.createElement('img');
+                    img.src = "./static/img/128_chat_icon.png";
+                    img.className = "botAvatar"
+                    var p = document.createElement('p');
+                    p.className = "botMsg";
+                    p.innerHTML = response[i].text;
+                    var div1= document.createElement('div');
+                    div1.className = 'clearfix';
+                    var div2 = document.createElement('div');;
+                    div2.appendChild(img);div2.appendChild(p);div2.appendChild(div1);
+                    
+                    //div2.appendChild(dum);
+                    $(div2).appendTo(".chats").hide().fadeIn(1000);
                 }
 
                 //check if the response contains "images"
@@ -221,6 +236,7 @@ function setBotResponse(response) {
                     var BotResponse = '<img class="botAvatar" src="./static/img/128_chat_icon.png"/><p class="botMsg">' +  '<img class="imgcard" src="' + response[i].image + '">' + '</div><div class="clearfix">';
                     $(BotResponse).appendTo(".chats").hide().fadeIn(1000);
                 }
+                console.log(response[i]);
 
 
                 //check if the response contains "buttons" 
